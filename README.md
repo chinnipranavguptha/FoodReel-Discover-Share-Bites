@@ -18,6 +18,6 @@ The platform features secure authentication, partner dashboards, video uploads, 
 
 🌐 Responsive Design: Optimized for mobile and desktop for smooth UX.
 
-![image alt](https://github.com/chinnipranavguptha/FoodReel-Discover-Share-Bites/blob/537dc7699006e7df8be4ace2f5a6b5e594f01724/Screenshot%202025-11-11%20100617.png)
+![image alt](https://github.com/chinnipranavguptha/FoodReel-Discover-Share-Bites/blob/d8dfa5c86b897bfefb7f06d3a32525cad9eeb8d1/MixCollage-11-Nov-2025-12-11-PM-642.jpg)
 
 

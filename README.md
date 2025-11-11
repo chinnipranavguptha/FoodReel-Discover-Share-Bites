@@ -17,3 +17,7 @@ The platform features secure authentication, partner dashboards, video uploads, 
 ❤️ Likes & Comments: Engage with reels and share food experiences.
 
 🌐 Responsive Design: Optimized for mobile and desktop for smooth UX.
+
+![image alt](https://github.com/chinnipranavguptha/FoodReel-Discover-Share-Bites/blob/537dc7699006e7df8be4ace2f5a6b5e594f01724/Screenshot%202025-11-11%20100617.png)
+
+

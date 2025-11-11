@@ -1,0 +1,42 @@
+/* Centralized theme variables. Uses system preference to switch light/dark. */
+
+:root {
+    /* Light theme defaults */
+    --bg: #ffffff;
+    --surface: #f7f7fb;
+    --card: #ffffff;
+    --text: #0f1724;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    /* blue-600 */
+    --accent-foreground: #ffffff;
+    --radius: 12px;
+    --shadow: 0 6px 18px rgba(15, 23, 36, 0.06);
+    --input-bg: #ffffff;
+    --border: #e6e9ef;
+}
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --bg: #0b1220;
+        --surface: #071028;
+        --card: #081428;
+        --text: #e6eef8;
+        --muted: #94a3b8;
+        --accent: #60a5fa;
+        /* blue-400 */
+        --accent-foreground: #062a4f;
+        --radius: 12px;
+        --shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+        --input-bg: #061028;
+        --border: rgba(255, 255, 255, 0.06);
+    }
+}
+
+
+/* Small utility tokens */
+
+:root {
+    --max-width: 420px;
+    --gutter: 20px;
+}

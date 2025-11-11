@@ -1,0 +1,97 @@
+.create-food-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0;
+    background-color: #061028;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0b1220 0%, #0f1a2a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://i.pinimg.com/736x/b7/e7/24/b7e724e2c30e2154b62269ae49461011.jpg);
+}
+
+.create-food-title {
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.create-food-wrapper {
+    background-color: #0d1b2a;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.create-food-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-button {
+    background-color: #4a9eff;
+    color: #ffffff;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #2e7dd8;
+}
+
+.submit-button:disabled {
+    background-color: #062a4f;
+    cursor: not-allowed;
+}

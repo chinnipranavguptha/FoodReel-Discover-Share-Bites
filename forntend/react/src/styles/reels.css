@@ -1,0 +1,295 @@
+/* Container holds vertical reels and enables snapping */
+
+.reels-container {
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    background: linear-gradient(180deg, #0a0e27 0%, #0f1a2a 50%, #0b1220 100%);
+}
+
+.reel-item {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.reel-video {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    background: #000;
+}
+
+.reel-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    pointer-events: none;
+    /* allow video interactions through area except buttons */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(11, 18, 32, 0.4) 60%, rgba(11, 18, 32, 0.5) 100%);
+    padding: 1rem 1rem 0.8rem 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    z-index: 50;
+}
+
+.reel-meta {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 80%;
+    pointer-events: auto;
+    /* enable clicks on the content */
+    /* keep items aligned to the start (left) at bottom */
+    align-items: flex-start;
+}
+
+.reel-description {
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.2;
+    /* Truncate to 2 lines */
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.reel-visit {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.95);
+    color: #111;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    width: fit-content;
+}
+
+
+/* Small screens adjustments */
+
+@media (max-width: 600px) {
+    .reel-meta {
+        max-width: 90%;
+    }
+    .reel-description {
+        font-size: 0.95rem;
+    }
+    .reel-visit {
+        padding: 6px 10px;
+    }
+}
+
+
+/* Fallback style for errored videos */
+
+.reel-item.reel-error {
+    background: #111;
+    color: #fff;
+}
+
+.reel-item.reel-error::after {
+    content: "Video not available";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+
+/* Reel info (description + visit store) used in JSX */
+
+.reel-overlay .reel-info {
+    pointer-events: auto;
+    max-width: 72%;
+}
+
+.reel-info .reel-title {
+    margin: 0 0 6px 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: -0.5px;
+}
+
+.reel-info .reel-desc {
+    margin: 0 0 8px 0;
+    color: #e0e7ff;
+    background: rgba(74, 158, 255, 0.12);
+    padding: 8px 10px;
+    border-radius: 6px;
+    border-left: 3px solid #4a9eff;
+    display: inline-block;
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.visit-store-button {
+    display: inline-block;
+    margin-top: 6px;
+    background: linear-gradient(135deg, #4a9eff 0%, #2e7dd8 100%);
+    /* vibrant blue like mockup */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 16px rgba(74, 158, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.visit-store-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 158, 255, 0.4);
+}
+
+
+/* Right side vertical actions */
+
+.reel-right-actions {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    pointer-events: auto;
+    z-index: 55;
+}
+
+.reel-right-actions .action-btn {
+    background: rgba(74, 158, 255, 0.15);
+    border: 1px solid rgba(74, 158, 255, 0.3);
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reel-right-actions .action-btn:hover {
+    background: rgba(74, 158, 255, 0.25);
+    border-color: rgba(74, 158, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.reel-right-actions .action-btn svg {
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.reel-right-actions .action-count {
+    font-size: 0.75rem;
+    color: #b3d9ff;
+    font-weight: 600;
+}
+
+
+/* Bottom navigation */
+
+.bottom-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+    height: 64px;
+    background: rgba(11, 18, 32, 0.8);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border: 1px solid rgba(74, 158, 255, 0.2);
+    backdrop-filter: blur(12px);
+    z-index: 60;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.bottom-nav .nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.bottom-nav .nav-btn:hover {
+    transform: scale(1.08);
+    color: #4a9eff;
+}
+
+.bottom-nav .nav-label {
+    font-size: 0.7rem;
+    color: #b3d9ff;
+    font-weight: 500;
+}
+
+.nav-center-pill {
+    width: 120px;
+    height: 40px;
+    background: linear-gradient(135deg, #4a9eff 0%, #2e7dd8 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(74, 158, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-center-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(74, 158, 255, 0.4);
+}
+
+@media (max-width: 420px) {
+    .reel-right-actions {
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .reel-overlay {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        padding: 1.5rem 1rem 1rem 1rem;
+    }
+    .reel-info .reel-title {
+        font-size: 1.1rem;
+    }
+    .bottom-nav {
+        height: 60px;
+        left: 10px;
+        right: 10px;
+        bottom: 14px;
+        padding: 0 16px;
+    }
+    .nav-center-pill {
+        width: 100px;
+        height: 36px;
+    }
+}
